@@ -5,7 +5,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'awesome.js',
+        filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
     },
     module: {
@@ -16,7 +16,6 @@ module.exports = {
                     'style-loader',
                     'css-loader',
                     'sass-loader',
-
                 ],
             },
         ],
@@ -24,6 +23,12 @@ module.exports = {
 
     plugins: [
         new BundleAnalyzerPlugin()
-    ]
-};
+    ],
 
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'public'),
+        },
+        port: 9000
+    }
+}
