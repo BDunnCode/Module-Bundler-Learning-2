@@ -1,4 +1,5 @@
-const path = require('path')
+const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 module.exports = {
@@ -7,4 +8,22 @@ module.exports = {
         filename: 'awesome.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    module: {
+        rules: [
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+
+                ],
+            },
+        ],
+    },
+
+    plugins: [
+        new BundleAnalyzerPlugin()
+    ]
 };
+
